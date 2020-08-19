@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Text Editor</title>
+        <script src="https://use.fontawesome.com/4230c363e8.js"></script>
+        <link rel="stylesheet" href="editor.css" type="text/css">
+    </head>
+    <body onload="enabledEditMode();"><br>
+        <div class="content">
+            <table>
+            <tr><td><b>Title</b></td><td><input class="btn btn-block btn-10p24" size=" 50" name="title" type="text" placeholder="" style="border:1px solid #000;text-align:left;color:black"></td></tr>
+            </table><div id="visual-editor"><br>
+            </div>
+            <div>
+                <button onclick="execCmd('bold');"><i class="fa fa-bold"></i></button>
+                <button onclick="execCmd('italic');"><i class="fa fa-italic"></i></button>
+                <button onclick="execCmd('underline');"><i class="fa fa-underline"></i></button>
+                <button onclick="execCmd('strikeThrough');"><i class="fa fa-strikethrough"></i></button>
+                <button onclick="execCmd('justifyLeft');"><i class="fa fa-align-left"></i></button>
+                <button onclick="execCmd('justifyCenter');"><i class="fa fa-align-center"></i></button>
+                <button onclick="execCmd('justifyRight');"><i class="fa fa-align-right"></i></button>
+                <button onclick="execCmd('justifyFull');"><i class="fa fa-align-justify"></i></button>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
+               Font Style: <select onchange="execCommandwithArg('fontName',this.value);">
+                    <option value="Arial">Arial</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Courier">Courier</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Algerian">Algerian</option>
+                    <option value="Calibri">Calibri</option>
+                </select>
+                Font Color:<input type="color" onchange="execCommandwithArg('foreColor',this.value);"/>
+               
+                
+                <br>
+                &nbsp;&nbsp;
+                <button onclick="execCmd('undo');"><i class="fa fa-undo"></i></button>
+                <button onclick="execCmd('repeat');"><i class="fa fa-repeat"></i></button>
+                <button onclick="execCmd('cut');"><i class="fa fa-cut"></i></button>
+                <button onclick="execCmd('copy');"><i class="fa fa-copy"></i></button>
+                <button onclick="execCmd('paste');"><i class="fa fa-paste"></i></button>
+                <button onclick="execCmd('link');"><i class="fa fa-link"></i></button>
+                <button onclick="execCmd('unlink');"><i class="fa fa-unlink"></i></button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Font Size:<select  onchange="execCommandwithArg('fontSize',this.value);">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Background Color:<input type="color" onchange="execCommandwithArg('hiliteColor',this.value);"/>
+            </div><br>
+            <iframe name="richtextfield" style="width:800px; height:400px; border:1px black solid;"></iframe>
+            <script type="text/javascript">
+                function enabledEditMode()
+                {
+                    richtextfield.document.designMode="on";
+                }
+                function execCmd(command){
+                    richtextfield.document.execCommand(command, false, null);
+                }
+                function execCommandwithArg(command, arg){
+                    richtextfield.document.execCommand(command, false, arg);
+                }
+            </script>
+    </body>
+</html>
