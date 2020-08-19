@@ -15,3 +15,8 @@ button{
     color:white;
     background-color:black;
 }
+button:active{
+    background-color:white;
+    color:black;
+
+}
